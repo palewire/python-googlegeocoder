@@ -29,7 +29,7 @@ class GoogleTest(BaseTest):
         self.assertEqual(type(result.formatted_address), type(u""))
         self.assertEqual(type(result.types), type([]))
         self.assertEqual(type(result.geometry), Geometry)
-        self.assertEqual(type(result.geometry.location), Coordinate)
+        self.assertEqual(type(result.geometry.location), Coordinates)
         self.assertEqual(type(result.geometry.location_type), type(u""))
         self.assertEqual(type(result.geometry.viewport), Bounds)
         self.assertEqual(type(result.geometry.bounds), Bounds)

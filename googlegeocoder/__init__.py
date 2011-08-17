@@ -141,7 +141,7 @@ class Geometry(BaseAPIObject):
         else:
             self.bounds = None
         self.viewport = Bounds(self.viewport)
-        self.location = Coordinate(self.location)
+        self.location = Coordinates(self.location)
         if hasattr(self, "partial_match"):
             self.partial_match = True
         else:
@@ -161,14 +161,14 @@ class Bounds(BaseAPIObject):
     """
     def __init__(self, d):
         self.__dict__ = d
-        self.southwest = Coordinate(self.southwest)
-        self.northeast = Coordinate(self.northeast)
+        self.southwest = Coordinates(self.southwest)
+        self.northeast = Coordinates(self.northeast)
     
     def __unicode__(self):
         return unicode("(%s, %s)" % (self.southwest, self.northeast))
 
 
-class Coordinate(BaseAPIObject):
+class Coordinates(BaseAPIObject):
     """
     A lat/lng pair.
     """
