@@ -13,7 +13,7 @@ h2. Features
 * Submit a lat/lng pair and have it reverse-geocoded
 * Results include all data returned by Google, including formatted address, location, viewport, bounds, address type and address components
 * Bias results to a bounding box you provide
-* Bias results to a region you specify by county code
+* Bias results to a region you specify by country code
 * No API key required
 
 h2. Getting started
