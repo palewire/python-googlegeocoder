@@ -18,3 +18,7 @@ h2. Features
 h2. Installation
 
 <pre><code>$ pip install python-googlegeocoder</code></pre>
+
+h2. Resources
+
+* "Google's official documentation":http://code.google.com/apis/maps/documentation/geocoding/
