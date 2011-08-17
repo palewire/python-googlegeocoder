@@ -8,10 +8,6 @@ except ImportError:
     import simplejson as json
 
 
-#
-# API connection client
-#
-
 class GoogleGeocoder(object):
     """
     A simple wrapper on version 3 of Google's geocoder API
@@ -43,8 +39,9 @@ class GoogleGeocoder(object):
         if region:
             params['region'] = region
         json = self._fetch_json(params)
+        if json["status"] != "OK":
+            raise ValueError(json["status"])
         return [GeocoderResult(i) for i in json.get("results")]
-
 
 
 class BaseAPIObject(object):

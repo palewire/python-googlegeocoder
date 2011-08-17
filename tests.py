@@ -41,5 +41,6 @@ class GoogleTest(BaseTest):
         result = self.geocoder.get("Toledo", region='ES')
         self.assertEqual(result[0].formatted_address, u'Toledo, Spain')
 
+
 if __name__ == '__main__':
     unittest.main()
