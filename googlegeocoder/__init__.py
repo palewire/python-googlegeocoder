@@ -23,11 +23,14 @@ class GoogleGeocoder(object):
         response = urllib2.urlopen(request)
         return json.loads(response.read())
 
-    def get(self, address, sensor='false', bounding_box=None, region=None):
-        params = {
-            'address': address,
-            'sensor': sensor,
-        }
+    def get(self, submission, sensor='false', bounding_box=None, region=None):
+        params = {'sensor': sensor}
+        if isinstance(submission, basestring):
+            params['address'] = submission
+        elif len(submission) == 2:
+            params['latlng'] = ",".join(map(str, submission))
+        else:
+            raise ValueError("Your submission could not be parsed.")
         if bounding_box:
             if len(bounding_box) != 2:
                 raise ValueError("You have submitted a bad bounding box.")
@@ -38,10 +41,10 @@ class GoogleGeocoder(object):
             )
         if region:
             params['region'] = region
-        json = self._fetch_json(params)
-        if json["status"] != "OK":
+        data = self._fetch_json(params)
+        if data["status"] != "OK":
             raise ValueError(json["status"])
-        return [GeocoderResult(i) for i in json.get("results")]
+        return [GeocoderResult(i) for i in data.get("results")]
 
 
 class BaseAPIObject(object):
@@ -133,7 +136,10 @@ class Geometry(BaseAPIObject):
     """
     def __init__(self, d):
         self.__dict__ = d
-        self.bounds = Bounds(self.bounds)
+        if hasattr(self, "bounds"):
+            self.bounds = Bounds(self.bounds)
+        else:
+            self.bounds = None
         self.viewport = Bounds(self.viewport)
         self.location = Coordinate(self.location)
         if hasattr(self, "partial_match"):

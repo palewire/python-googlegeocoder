@@ -11,10 +11,14 @@ class BaseTest(unittest.TestCase):
 
 class GoogleTest(BaseTest):
     
-    def test_search(self):
+    def test_address(self):
         result = self.geocoder.get("Winnetka")
         self.assertEqual(type(result[0]), GeocoderResult)
     
+    def test_latlng(self):
+        result = self.geocoder.get((34.236144,-118.500938))
+        self.assertEqual(len(result), 8)
+
     def test_result_attributes(self):
         result = self.geocoder.get("Winnetka")[0]
         self.assertEqual(type(result.address_components), type([]))
