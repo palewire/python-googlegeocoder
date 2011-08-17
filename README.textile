@@ -14,10 +14,47 @@ h2. Features
 * Results include all data returned by Google, including formatted address, location, viewport, bounds, address type and address components
 * Bias results to a bounding box you provide
 * Bias results to a region you specify by county code
+* No API key required
 
-h2. Installation
+h2. Getting started
+
+Installation
 
 <pre><code>$ pip install python-googlegeocoder</code></pre>
+
+Geocoding an address
+
+<pre><code>>>> from googlegeocoder import GoogleGeocoder
+>>> geocoder = GoogleGeocoder()
+>>> search = geocoder.get("Watts Towers")
+>>> search
+[<GeocoderResult: Watts Towers Arts Center, 1727 E 107th St, Los Angeles, CA 90002-3621, USA>]
+>>> search[0].geometry.location
+<Coordinates: (33.9395164, -118.2414404)></code></pre>
+
+Reverse geocoding coordinates
+
+<pre><code>>>> reverse = geocoder.get((33.9395164, -118.2414404))
+>>> reverse
+[<GeocoderResult: 1736 E 106th St, Los Angeles, CA 90002, USA>, <GeocoderResult: Watts, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA 90002, USA>, <GeocoderResult: South LA, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, California, USA>, <GeocoderResult: California, USA>, <GeocoderResult: United States>]</code></pre>
+
+Viewport biasing
+
+<pre><code>>>> before = geocoder.get("Winnetka")
+>>> before[0]
+<GeocoderResult: Winnetka, IL, USA>
+>>> after = geocoder.get("Winnetka", bounding_box=((34.172684,-118.604794), (34.236144,-118.500938)))
+>>> after[0]
+<GeocoderResult: Winnetka, Los Angeles, CA, USA></code></pre>
+
+Region biasing
+
+<pre><code>>>> before = geocoder.get("Toledo")
+>>> before[0]
+<GeocoderResult: Toledo, OH, USA>
+>>> after = geocoder.get("Toledge", region="ES")
+>>> after[0]
+<GeocoderResult: Toledo, Spain></code></pre>
 
 h2. Resources
 
