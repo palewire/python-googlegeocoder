@@ -43,7 +43,7 @@ class GoogleGeocoder(object):
             params['region'] = region
         data = self._fetch_json(params)
         if data["status"] != "OK":
-            raise ValueError(json["status"])
+            raise ValueError(data["status"])
         return [GeocoderResult(i) for i in data.get("results")]
 
 
