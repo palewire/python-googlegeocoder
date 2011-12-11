@@ -52,7 +52,7 @@ Region biasing
 <pre><code>>>> before = geocoder.get("Toledo")
 >>> before[0]
 <GeocoderResult: Toledo, OH, USA>
->>> after = geocoder.get("Toledge", region="ES")
+>>> after = geocoder.get("Toledo", region="ES")
 >>> after[0]
 <GeocoderResult: Toledo, Spain></code></pre>
 
