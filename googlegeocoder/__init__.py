@@ -23,7 +23,8 @@ class GoogleGeocoder(object):
         response = urllib2.urlopen(request)
         return json.loads(response.read())
 
-    def get(self, submission, sensor='false', bounding_box=None, region=None):
+    def get(self, submission, sensor='false', bounding_box=None, region=None,
+            language=None):
         params = {'sensor': sensor}
         if isinstance(submission, basestring):
             params['address'] = submission
@@ -41,6 +42,8 @@ class GoogleGeocoder(object):
             )
         if region:
             params['region'] = region
+        if language:
+            params['language'] = language
         data = self._fetch_json(params)
         if data["status"] != "OK":
             raise ValueError(data["status"])
