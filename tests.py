@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import unittest
 from googlegeocoder import *
 from pprint import pprint
@@ -44,6 +45,10 @@ class GoogleTest(BaseTest):
     def test_region_bias(self):
         result = self.geocoder.get("Toledo", region='ES')
         self.assertEqual(result[0].formatted_address, u'Toledo, Spain')
+
+    def test_language(self):
+        result = self.geocoder.get('Moscow', language='ru')
+        self.assertEqual(result[0].formatted_address, u'Москва, Россия')
 
 
 if __name__ == '__main__':
