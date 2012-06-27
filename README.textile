@@ -14,6 +14,7 @@ h2. Features
 * Results include all data returned by Google, including formatted address, location, viewport, bounds, address type and address components
 * Bias results to a bounding box you provide
 * Bias results to a region you specify by country code
+* Specify a language code
 * No API key required
 
 h2. Getting started
