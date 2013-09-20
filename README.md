@@ -43,7 +43,7 @@ Reverse geocoding coordinates
 ```python
 >>> reverse = geocoder.get((33.9395164, -118.2414404))
 >>> reverse
-[<GeocoderResult: 1736 E 106th St, Los Angeles, CA 90002, USA>, <GeocoderResult: Watts, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA 90002, USA>, <GeocoderResult: South LA, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, California, USA>, <GeocoderResult: California, USA>, <GeocoderResult: United States>]</code></pre>
+[<GeocoderResult: 1736 E 106th St, Los Angeles, CA 90002, USA>, <GeocoderResult: Watts, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA 90002, USA>, <GeocoderResult: South LA, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, California, USA>, <GeocoderResult: California, USA>, <GeocoderResult: United States>]
 ```
 
 Viewport biasing
