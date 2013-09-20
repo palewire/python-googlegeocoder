@@ -22,7 +22,6 @@ class GoogleTest(BaseTest):
 
     def test_result_attributes(self):
         result = self.geocoder.get("Winnetka")[0]
-        print result.geometry.location.wkt
         self.assertEqual(type(result.address_components), type([]))
         [self.assertEqual(type(i), AddressComponent) for i in result.address_components]
         [self.assertEqual(type(i.long_name), type(u"")) for i in result.address_components]
