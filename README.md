@@ -38,4 +38,37 @@ Geocoding an address
 <Coordinates: (33.9395164, -118.2414404)>
 ```
 
+Reverse geocoding coordinates
 
+```python
+>>> reverse = geocoder.get((33.9395164, -118.2414404))
+>>> reverse
+[<GeocoderResult: 1736 E 106th St, Los Angeles, CA 90002, USA>, <GeocoderResult: Watts, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA 90002, USA>, <GeocoderResult: South LA, Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, CA, USA>, <GeocoderResult: Los Angeles, California, USA>, <GeocoderResult: California, USA>, <GeocoderResult: United States>]</code></pre>
+```
+
+Viewport biasing
+
+```python
+>>> before = geocoder.get("Winnetka")
+>>> before[0]
+<GeocoderResult: Winnetka, IL, USA>
+>>> after = geocoder.get("Winnetka", bounding_box=((34.172684,-118.604794), (34.236144,-118.500938)))
+>>> after[0]
+<GeocoderResult: Winnetka, Los Angeles, CA, USA>
+```
+
+Region biasing
+
+```python
+>>> before = geocoder.get("Toledo")
+>>> before[0]
+<GeocoderResult: Toledo, OH, USA>
+>>> after = geocoder.get("Toledo", region="ES")
+>>> after[0]
+<GeocoderResult: Toledo, Spain>
+```
+
+Resources
+---------
+
+* [Google's official documentation](http://code.google.com/apis/maps/documentation/geocoding/)
