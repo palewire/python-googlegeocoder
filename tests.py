@@ -22,6 +22,7 @@ class GoogleTest(BaseTest):
 
     def test_result_attributes(self):
         result = self.geocoder.get("Winnetka")[0]
+        print result.geometry.location.wkt
         self.assertEqual(type(result.address_components), type([]))
         [self.assertEqual(type(i), AddressComponent) for i in result.address_components]
         [self.assertEqual(type(i.long_name), type(u"")) for i in result.address_components]
@@ -35,6 +36,7 @@ class GoogleTest(BaseTest):
         self.assertEqual(type(result.geometry.viewport), Bounds)
         self.assertEqual(type(result.geometry.bounds), Bounds)
         self.assertEqual(type(result.geometry.partial_match), type(True))
+        self.assertEqual(result.geometry.location.wkt, 'POINT(-87.735895 42.1080834)')
      
     def test_viewport_bias(self):
         result = self.geocoder.get("Winnetka", 

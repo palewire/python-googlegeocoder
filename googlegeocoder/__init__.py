@@ -177,6 +177,7 @@ class Coordinates(BaseAPIObject):
     """
     def __unicode__(self):
         return unicode("(%s, %s)" % (self.lat, self.lng))
-
-
-
+    
+    @property
+    def wkt(self):
+        return "POINT(%s %s)" % (self.lng, self.lat)
