@@ -3,7 +3,7 @@ python-googlegeocoder
 
 A simple Python wrapper for version three of Google's geocoder API
 
-[![Build Status](https://travis-ci.org/datadesk/python-documentcloud.png?branch=master)](https://travis-ci.org/datadesk/python-documentcloud)
+[![Build Status](https://travis-ci.org/datadesk/python-googlegeocoder.png?branch=master)](https://travis-ci.org/datadesk/python-googlegeocoder)
 
 Features
 --------
