@@ -1,9 +1,6 @@
-<pre><code>   ______                   __      ______                           __          
-  / ____/____  ____  ____ _/ /___  / ____/___  ____  _________  ____/ /___  _____
- / / __ / __ \/ __ \/ __ `/ // _ \/ / __ / _ \/ __ \/ ___/ __ \/ __  // _ \/ ___/
-/ /_/ // /_/ / /_/ / /_/ / //  __/ /_/ //  __/ /_/ / /__/ /_/ / /_/ //  __/ /    
-\____/ \____/\____/\__, /_/ \___/\____/ \___/\____/\___/\____/\__,_/ \___/_/     
-                  /____/                                                        </pre></code>
+=====================
+python-googlegeocoder
+=====================
 
 A simple Python wrapper for version three of Google's geocoder API
 
@@ -19,5 +16,14 @@ Features
 * Bias results to a region you specify by country code
 * Specify a language code
 * No API key required
+
+Getting started
+---------------
+
+Installation
+
+```bash
+$ pip install python-googlegeocoder
+```
 
 
