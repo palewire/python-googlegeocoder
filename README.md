@@ -26,4 +26,16 @@ Installation
 $ pip install python-googlegeocoder
 ```
 
+Geocoding an address
+
+```python
+>>> from googlegeocoder import GoogleGeocoder
+>>> geocoder = GoogleGeocoder()
+>>> search = geocoder.get("Watts Towers")
+>>> search
+[<GeocoderResult: Watts Towers Arts Center, 1727 E 107th St, Los Angeles, CA 90002-3621, USA>]
+>>> search[0].geometry.location
+<Coordinates: (33.9395164, -118.2414404)>
+```
+
 
