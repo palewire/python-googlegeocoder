@@ -71,19 +71,19 @@ Region biasing
 Iterate through a list of addresses and return latitude, longitude and location type
 
 ```python
->>> from googlegeocoder import GoogleGeocoder
->>> geocoder = GoogleGeocoder()
->>> list_of_addresses = ['1727 E 107th St, Los Angeles, CA', '317 Broadway, Los Angeles, CA']
->>> for address in list_of_addresses:
->>>     search = geocoder.get(address)
->>>     try:
->>>         result = search[0]
->>>     except ValueError:
->>>         continue
->>>     lat = str(search[0].geometry.location.lat)
->>>     lng = str(search[0].geometry.location.lng)
->>>     accuracy = str(search[0].geometry.location_type)
->>>     print '%s\t%s\t%s\t%s\n' % (search, lat, lng, accuracy)
+from googlegeocoder import GoogleGeocoder
+geocoder = GoogleGeocoder()
+list_of_addresses = ['1727 E 107th St, Los Angeles, CA', '317 Broadway, Los Angeles, CA']
+for address in list_of_addresses:
+    search = geocoder.get(address)
+    try:
+        result = search[0]
+    except ValueError:
+        continue
+    lat = str(search[0].geometry.location.lat)
+    lng = str(search[0].geometry.location.lng)
+    accuracy = str(search[0].geometry.location_type)
+    print '%s\t%s\t%s\t%s\n' % (search.formatted_address, lat, lng, accuracy)
 1727 East 107th Street, Los Angeles, CA 90002, USA	33.9386619	-118.2421333	RANGE_INTERPOLATED
 317 Broadway, Los Angeles, CA 90013, USA	34.0505788	-118.2486735	ROOFTOP
 ```
