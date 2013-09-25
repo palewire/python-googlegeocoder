@@ -80,7 +80,13 @@ for address in list_of_addresses:
         first_result = search[0]
     except ValueError:
         continue
-    print first_result.formatted_address, first_result.geometry.location.lat, first_result.geometry.location.lng, first_result.geometry.location.location_type
+    output =  [
+        first_result.formatted_address, 
+        first_result.geometry.location.lat, 
+        first_result.geometry.location.lng, 
+        first_result.geometry.location.location_type
+    ]
+    print map(str, output)
 ```
 
 Resources
