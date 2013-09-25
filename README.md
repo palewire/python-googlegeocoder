@@ -70,7 +70,7 @@ Region biasing
 <GeocoderResult: Toledo, Spain>
 ```
 
-Iterate through a list of addresses and print out latitude, longitude and location type of the first result.
+Loop through a list of addresses and print out latitude, longitude and location type of the first result.
 
 ```python
 from googlegeocoder import GoogleGeocoder
