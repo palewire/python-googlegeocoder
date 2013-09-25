@@ -80,7 +80,7 @@ for address in list_of_addresses:
     search = geocoder.get(address)
     try:
         first_result = search[0]
-    except ValueError:
+    except IndexError:
         continue
     output =  [
         first_result.formatted_address, 
