@@ -75,7 +75,10 @@ Loop through a list of addresses and print out latitude, longitude and location 
 ```python
 from googlegeocoder import GoogleGeocoder
 geocoder = GoogleGeocoder()
-list_of_addresses = ['1727 E 107th St, Los Angeles, CA', '317 Broadway, Los Angeles, CA']
+list_of_addresses = [
+    '1727 E 107th St, Los Angeles, CA', 
+    '317 Broadway, Los Angeles, CA'
+]
 for address in list_of_addresses:
     try:
         search = geocoder.get(address)
