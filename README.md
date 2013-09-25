@@ -68,6 +68,31 @@ Region biasing
 <GeocoderResult: Toledo, Spain>
 ```
 
+Iterate through a list of addresses and return latitude, longitude and location type
+
+```python
+>>> from googlegeocoder import GoogleGeocoder
+>>> geocoder = GoogleGeocoder()
+>>> list_of_addresses = ['1727 E 107th St, Los Angeles, CA', '317 Broadway, Los Angeles, CA']
+>>> f = open("results.txt", "a")
+>>> for address in list_of_addresses:
+>>>     address = address.replace("\n","")
+>>>     search = geocoder.get(address)
+>>>     try:
+>>>         address = str(search[0])
+>>>         lat = str(search[0].geometry.location.lat)
+>>>         lng = str(search[0].geometry.location.lng)
+>>>         accuracy = str(search[0].geometry.location_type)
+>>>         address_for_output = '%s\t%s\t%s\t%s\n' % (address, lat, lng, accuracy)
+>>>     except ValueError:
+>>>         address_for_output = 'ERROR\n'
+>>>         print "We hit an error"
+>>>     print address_for_output
+>>>     f.write(address_for_output)
+1727 East 107th Street, Los Angeles, CA 90002, USA	33.9386619	-118.2421333	RANGE_INTERPOLATED
+317 Broadway, Los Angeles, CA 90013, USA	34.0505788	-118.2486735	ROOFTOP
+```
+
 Resources
 ---------
 
