@@ -84,7 +84,7 @@ for address in list_of_addresses:
         first_result.formatted_address, 
         first_result.geometry.location.lat, 
         first_result.geometry.location.lng, 
-        first_result.geometry.location.location_type
+        first_result.geometry.location_type
     ]
     print map(str, output)
 ```
