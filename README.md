@@ -68,7 +68,7 @@ Region biasing
 <GeocoderResult: Toledo, Spain>
 ```
 
-Iterate through a list of addresses and return latitude, longitude and location type
+Iterate through a list of addresses and print out latitude, longitude and location type about the first result.
 
 ```python
 from googlegeocoder import GoogleGeocoder
@@ -83,7 +83,7 @@ for address in list_of_addresses:
     lat = str(search[0].geometry.location.lat)
     lng = str(search[0].geometry.location.lng)
     accuracy = str(search[0].geometry.location_type)
-    print '%s\t%s\t%s\t%s\n' % (search.formatted_address, lat, lng, accuracy)
+    print '%s\t%s\t%s\t%s\n' % (search[0].formatted_address, lat, lng, accuracy)
 1727 East 107th Street, Los Angeles, CA 90002, USA	33.9386619	-118.2421333	RANGE_INTERPOLATED
 317 Broadway, Los Angeles, CA 90013, USA	34.0505788	-118.2486735	ROOFTOP
 ```
