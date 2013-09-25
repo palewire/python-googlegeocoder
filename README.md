@@ -77,11 +77,11 @@ from googlegeocoder import GoogleGeocoder
 geocoder = GoogleGeocoder()
 list_of_addresses = ['1727 E 107th St, Los Angeles, CA', '317 Broadway, Los Angeles, CA']
 for address in list_of_addresses:
-    search = geocoder.get(address)
     try:
-        first_result = search[0]
-    except IndexError:
+        search = geocoder.get(address)
+    except ValueError:
         continue
+    first_result = search[0]
     output =  [
         first_result.formatted_address, 
         first_result.geometry.location.lat, 
