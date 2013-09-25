@@ -36,6 +36,8 @@ Geocoding an address
 [<GeocoderResult: Watts Towers Arts Center, 1727 E 107th St, Los Angeles, CA 90002-3621, USA>]
 >>> search[0].geometry.location
 <Coordinates: (33.9395164, -118.2414404)>
+>>> print (search[0].geometry.location.lat, search[0].geometry.location.lng)
+(33.9395164, -118.2414404)
 ```
 
 Reverse geocoding coordinates
