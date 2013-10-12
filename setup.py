@@ -71,7 +71,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
         file_info[0] = '\\PURELIB\\%s' % file_info[0]
 
 setup(name='python-googlegeocoder',
-      version='0.1.4',
+      version='0.2.0',
       description='A simple Python wrapper for version three of Google\'s geocoder API',
       author='Ben Welsh',
       author_email='ben.welsh@latimes.com',
