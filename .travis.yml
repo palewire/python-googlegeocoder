@@ -7,4 +7,7 @@ python:
   - "3.3"
 install:
  - pip install -r requirements.txt --use-mirrors
-script: python test.py
+script:
+ - pep8 googlegeocoder
+ - pyflakes googlegeocoder
+ - python test.py
