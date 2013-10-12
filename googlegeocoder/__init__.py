@@ -1,7 +1,8 @@
 """
 A simple Python wrapper on version 3 of Google's geocoder API.
 """
-import urllib, urllib2
+import six
+from six.moves import urllib
 try:
     import json
 except ImportError:
@@ -18,15 +19,15 @@ class GoogleGeocoder(object):
         """
         Configure a HTTP request, fire it off and return the response.
         """
-        params = urllib.urlencode(params, doseq=True)
-        request = urllib2.Request(self.BASE_URI + "?" + params)
-        response = urllib2.urlopen(request)
-        return json.loads(response.read())
+        params = urllib.parse.urlencode(params, doseq=True)
+        request = urllib.request.Request(self.BASE_URI + "?" + params)
+        response = urllib.request.urlopen(request)
+        return json.loads(response.read().decode("utf-8"))
 
     def get(self, submission, sensor='false', bounding_box=None, region=None,
             language=None):
         params = {'sensor': sensor}
-        if isinstance(submission, basestring):
+        if isinstance(submission, six.string_types):
             params['address'] = submission
         elif len(submission) == 2:
             params['latlng'] = ",".join(map(str, submission))
@@ -50,7 +51,22 @@ class GoogleGeocoder(object):
         return [GeocoderResult(i) for i in data.get("results")]
 
 
-class BaseAPIObject(object):
+class UnicodeMixin(object):
+    """
+    Mixin class to handle defining the proper __str__/__unicode__
+    methods in Python 2 or 3.
+    """
+    # Python 3
+    if six.PY3:
+        def __str__(self):
+            return self.__unicode__()
+    # Python 2
+    else:  
+        def __str__(self):
+            return self.__unicode__().encode('utf8')
+
+
+class BaseAPIObject(UnicodeMixin):
     """
     A generic object to be returned by the API
     """
@@ -59,9 +75,6 @@ class BaseAPIObject(object):
     
     def __repr__(self):
         return '<%s: %s>' % (self.__class__.__name__, self.__str__())
-    
-    def __str__(self):
-        return self.__unicode__().encode("utf-8")
 
 
 class GeocoderResult(BaseAPIObject):
@@ -93,7 +106,7 @@ class GeocoderResult(BaseAPIObject):
         self.geometry = Geometry(self.geometry)
     
     def __unicode__(self):
-        return unicode(self.formatted_address)
+        return six.u(self.formatted_address)
 
 
 class AddressComponent(BaseAPIObject):
@@ -114,7 +127,7 @@ class AddressComponent(BaseAPIObject):
         
     """
     def __unicode__(self):
-        return unicode(self.long_name)
+        return six.u(self.long_name)
 
 
 class Geometry(BaseAPIObject):
@@ -154,7 +167,7 @@ class Geometry(BaseAPIObject):
         return '<%s>' % (self.__class__.__name__)
 
     def __unicode__(self):
-        return unicode("Geometry")
+        return six.u("Geometry")
 
 
 class Bounds(BaseAPIObject):
@@ -168,7 +181,7 @@ class Bounds(BaseAPIObject):
         self.northeast = Coordinates(self.northeast)
     
     def __unicode__(self):
-        return unicode("(%s, %s)" % (self.southwest, self.northeast))
+        return six.u("(%s, %s)" % (self.southwest, self.northeast))
 
 
 class Coordinates(BaseAPIObject):
@@ -176,7 +189,7 @@ class Coordinates(BaseAPIObject):
     A lat/lng pair.
     """
     def __unicode__(self):
-        return unicode("(%s, %s)" % (self.lat, self.lng))
+        return six.u("(%s, %s)" % (self.lat, self.lng))
     
     @property
     def wkt(self):

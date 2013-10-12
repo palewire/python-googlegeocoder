@@ -1,3 +1,6 @@
+MAINFEST
+dist/
+.tox/
 *.pyc
 
 .idea/*
