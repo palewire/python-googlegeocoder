@@ -1,7 +1,12 @@
+PyYAML==3.10
 argparse==1.2.1
+coverage==3.7.1
 pep8==1.4.6
 py==1.4.17
 pyflakes==0.7.3
+python-coveralls==2.4.2
+requests==2.2.1
+sh==1.09
 six==1.4.1
 tox==1.6.1
 virtualenv==1.10.1

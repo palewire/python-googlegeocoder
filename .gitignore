@@ -1,5 +1,6 @@
+.coverage
+MANIFEST
 build/
-MAINFEST
 dist/
 .tox/
 *.pyc

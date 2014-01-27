@@ -18,7 +18,12 @@ class GoogleTest(BaseTest):
 
     def test_latlng(self):
         result = self.geocoder.get((34.236144,-118.500938))
-        self.assertEqual(len(result), 9)
+        self.assertEqual(len(result), 8)
+        self.assertRaises(
+            ValueError,
+            self.geocoder.get,
+            (('a','b','c'))
+        )
 
     def test_result_attributes(self):
         result = self.geocoder.get("Winnetka")[0]
@@ -34,14 +39,31 @@ class GoogleTest(BaseTest):
         self.assertEqual(type(result.geometry.location_type), type(u""))
         self.assertEqual(type(result.geometry.viewport), Bounds)
         self.assertEqual(type(result.geometry.bounds), Bounds)
+        self.assertTrue(isinstance(result.geometry.partial_match, bool))
         self.assertEqual(type(result.geometry.partial_match), type(True))
         self.assertTrue(result.geometry.location.wkt.startswith('POINT(-87'))
+        result.__str__()
+        result.__repr__()
+        result.__unicode__()
+        result.address_components[0].__unicode__()
+        result.geometry.__str__()
+        result.geometry.__repr__()
+        result.geometry.__unicode__()
+        result.geometry.bounds.__str__()
+        result.geometry.bounds.__repr__()
+        result.geometry.bounds.__unicode__()
 
     def test_viewport_bias(self):
         result = self.geocoder.get("Winnetka", 
             bounding_box=((34.172684,-118.604794), (34.236144,-118.500938)))
         self.assertEqual(result[0].formatted_address, 
             u'Winnetka, Los Angeles, CA, USA')
+        self.assertRaises(
+            ValueError,
+            self.geocoder.get,
+            "Winnetka",
+            bounding_box=(1,2,3)
+        )
 
     def test_region_bias(self):
         result = self.geocoder.get("Toledo", region='ES')

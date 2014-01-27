@@ -1,0 +1,10 @@
+[run]
+include =
+    googlegeocoder/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    != "OK"
+    except ImportError
+    def __str__

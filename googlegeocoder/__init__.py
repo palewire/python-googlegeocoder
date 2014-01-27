@@ -46,7 +46,7 @@ class GoogleGeocoder(object):
         if language:
             params['language'] = language
         data = self._fetch_json(params)
-        if data["status"] != "OK":
+        if data['status'] != "OK":
             raise ValueError(data["status"])
         return [GeocoderResult(i) for i in data.get("results")]
 
@@ -107,7 +107,7 @@ class GeocoderResult(BaseAPIObject):
         self.geometry = Geometry(self.geometry)
 
     def __unicode__(self):
-        return six.u(self.formatted_address)
+        return six.text_type(self.formatted_address)
 
 
 class AddressComponent(BaseAPIObject):
@@ -127,7 +127,7 @@ class AddressComponent(BaseAPIObject):
         type: A list indicating the type(s) of the address component.
     """
     def __unicode__(self):
-        return six.u(self.long_name)
+        return six.text_type(self.long_name)
 
 
 class Geometry(BaseAPIObject):
@@ -159,10 +159,7 @@ class Geometry(BaseAPIObject):
             self.bounds = None
         self.viewport = Bounds(self.viewport)
         self.location = Coordinates(self.location)
-        if hasattr(self, "partial_match"):
-            self.partial_match = True
-        else:
-            self.partial_match = False
+        self.partial_match = hasattr(self, "partial_match")
 
     def __repr__(self):
         return '<%s>' % (self.__class__.__name__)

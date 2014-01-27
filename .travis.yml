@@ -6,8 +6,11 @@ python:
   - "3.2"
   - "3.3"
 install:
- - sudo pip install -r requirements.txt
+ - pip install -r requirements.txt
 script:
  - pep8 googlegeocoder
  - pyflakes googlegeocoder
- - python test.py
+ - coverage run test.py
+# Report coverage results to coveralls.io
+after_success:
+ - coveralls
