@@ -165,7 +165,7 @@ class Geometry(BaseAPIObject):
         return '<%s>' % (self.__class__.__name__)
 
     def __unicode__(self):
-        return six.u("Geometry")
+        return u"Geometry"
 
 
 class Bounds(BaseAPIObject):
@@ -179,7 +179,7 @@ class Bounds(BaseAPIObject):
         self.northeast = Coordinates(self.northeast)
 
     def __unicode__(self):
-        return six.u("(%s, %s)" % (self.southwest, self.northeast))
+        return u"(%s, %s)" % (self.southwest, self.northeast)
 
 
 class Coordinates(BaseAPIObject):
@@ -187,7 +187,7 @@ class Coordinates(BaseAPIObject):
     A lat/lng pair.
     """
     def __unicode__(self):
-        return six.u("(%s, %s)" % (self.lat, self.lng))
+        return u"(%s, %s)" % (self.lat, self.lng)
 
     @property
     def wkt(self):
