@@ -107,7 +107,7 @@ class GeocoderResult(BaseAPIObject):
         self.geometry = Geometry(self.geometry)
 
     def __unicode__(self):
-        return six.text_type(self.formatted_address)
+        return u'%s' % self.formatted_address
 
 
 class AddressComponent(BaseAPIObject):
@@ -127,7 +127,7 @@ class AddressComponent(BaseAPIObject):
         type: A list indicating the type(s) of the address component.
     """
     def __unicode__(self):
-        return six.text_type(self.long_name)
+        return u'%s' % self.long_name
 
 
 class Geometry(BaseAPIObject):
@@ -165,7 +165,7 @@ class Geometry(BaseAPIObject):
         return '<%s>' % (self.__class__.__name__)
 
     def __unicode__(self):
-        return six.u("Geometry")
+        return u'Geometry'
 
 
 class Bounds(BaseAPIObject):
@@ -179,7 +179,7 @@ class Bounds(BaseAPIObject):
         self.northeast = Coordinates(self.northeast)
 
     def __unicode__(self):
-        return six.u("(%s, %s)" % (self.southwest, self.northeast))
+        return u'(%s, %s)' % (self.southwest, self.northeast)
 
 
 class Coordinates(BaseAPIObject):
@@ -187,8 +187,8 @@ class Coordinates(BaseAPIObject):
     A lat/lng pair.
     """
     def __unicode__(self):
-        return six.u("(%s, %s)" % (self.lat, self.lng))
+        return u'(%s, %s)' % (self.lat, self.lng)
 
     @property
     def wkt(self):
-        return "POINT(%s %s)" % (self.lng, self.lat)
+        return 'POINT(%s %s)' % (self.lng, self.lat)

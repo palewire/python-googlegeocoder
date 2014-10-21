@@ -2,14 +2,13 @@ language: python
 python:
   - "2.6"
   - "2.7"
-  - "3.2"
   - "3.3"
+  - "3.4"
 install:
  - sudo pip install -r requirements.txt
 script:
  - pep8 googlegeocoder
  - pyflakes googlegeocoder
  - coverage run test.py
-# Report coverage results to coveralls.io
 after_success:
  - coveralls

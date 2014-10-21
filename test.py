@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import six
 import unittest
 from googlegeocoder import *
-from pprint import pprint
 
 
 class BaseTest(unittest.TestCase):
@@ -43,15 +43,25 @@ class GoogleTest(BaseTest):
         self.assertEqual(type(result.geometry.partial_match), type(True))
         self.assertTrue(result.geometry.location.wkt.startswith('POINT(-87'))
         result.__str__()
+        six.print_(result.__str__())
         result.__repr__()
+        six.print_(result.__repr__())
         result.__unicode__()
+        six.print_(result.__unicode__())
         result.address_components[0].__unicode__()
+        six.print_(result.address_components[0].__unicode__())
         result.geometry.__str__()
+        six.print_(result.geometry.__str__())
         result.geometry.__repr__()
+        six.print_(result.geometry.__repr__())
         result.geometry.__unicode__()
+        six.print_(result.geometry.__unicode__())
         result.geometry.bounds.__str__()
+        six.print_(result.geometry.bounds.__str__())
         result.geometry.bounds.__repr__()
+        six.print_(result.geometry.bounds.__repr__())
         result.geometry.bounds.__unicode__()
+        six.print_(result.geometry.bounds.__unicode__())
 
     def test_viewport_bias(self):
         result = self.geocoder.get("Winnetka", 
