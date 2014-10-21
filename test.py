@@ -18,7 +18,7 @@ class GoogleTest(BaseTest):
 
     def test_latlng(self):
         result = self.geocoder.get((34.236144,-118.500938))
-        self.assertEqual(len(result), 8)
+        self.assertEqual(len(result), 7)
         self.assertRaises(
             ValueError,
             self.geocoder.get,
@@ -67,7 +67,7 @@ class GoogleTest(BaseTest):
 
     def test_region_bias(self):
         result = self.geocoder.get("Toledo", region='ES')
-        self.assertEqual(result[0].formatted_address, u'Toledo, Spain')
+        self.assertEqual(result[0].formatted_address, u'Toledo, Toledo, Spain')
 
     def test_language(self):
         result = self.geocoder.get('Moscow', language='ru')
