@@ -6,8 +6,7 @@ python:
 install:
  - sudo pip install -r requirements.txt
 script:
- - pep8 googlegeocoder
- - pyflakes googlegeocoder
+ - flake8 googlegeocoder
  - coverage run test.py
 after_success:
  - coveralls
