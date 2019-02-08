@@ -1,6 +1,7 @@
 """
 A simple Python wrapper on version 3 of Google's geocoder API.
 """
+import os
 import six
 from six.moves import urllib
 try:
@@ -15,6 +16,12 @@ class GoogleGeocoder(object):
     """
     BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
 
+    def __init__(self, key=None):
+        key = key or os.getenv("GOOGLE_MAPS_API_KEY")
+        if not key:
+            raise Exception("An API key is required by Google to use this service.")
+        self.key = key
+
     def _fetch_json(self, params):
         """
         Configure a HTTP request, fire it off and return the response.
@@ -26,7 +33,10 @@ class GoogleGeocoder(object):
 
     def get(self, submission, sensor='false', bounding_box=None, region=None,
             language=None):
-        params = {'sensor': sensor}
+        params = {
+            'sensor': sensor,
+            'key': self.key
+        }
         if isinstance(submission, six.string_types):
             params['address'] = submission
         elif len(submission) == 2:

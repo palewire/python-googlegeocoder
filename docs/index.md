@@ -13,7 +13,7 @@ Features
 * Bias results to a bounding box you provide
 * Bias results to a region you specify by country code
 * Specify a language code
-* No API key required
+* An API key is required by Google Maps.
 
 Getting started
 ---------------
@@ -28,7 +28,7 @@ Geocoding an address
 
 ```python
 >>> from googlegeocoder import GoogleGeocoder
->>> geocoder = GoogleGeocoder()
+>>> geocoder = GoogleGeocoder("<YOUR GOOGLE MAPS API KEY>")
 >>> search = geocoder.get("Watts Towers")
 >>> search
 [<GeocoderResult: Watts Towers Arts Center, 1727 E 107th St, Los Angeles, CA 90002-3621, USA>]

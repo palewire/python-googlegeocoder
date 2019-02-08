@@ -18,7 +18,7 @@ class GoogleTest(BaseTest):
 
     def test_latlng(self):
         result = self.geocoder.get((34.236144,-118.500938))
-        self.assertEqual(len(result), 7)
+        self.assertEqual(len(result), 9)
         self.assertRaises(
             ValueError,
             self.geocoder.get,
@@ -64,9 +64,9 @@ class GoogleTest(BaseTest):
         six.print_(result.geometry.bounds.__unicode__())
 
     def test_viewport_bias(self):
-        result = self.geocoder.get("Winnetka", 
+        result = self.geocoder.get("Winnetka",
             bounding_box=((34.172684,-118.604794), (34.236144,-118.500938)))
-        self.assertEqual(result[0].formatted_address, 
+        self.assertEqual(result[0].formatted_address,
             u'Winnetka, Los Angeles, CA, USA')
         self.assertRaises(
             ValueError,
@@ -77,7 +77,7 @@ class GoogleTest(BaseTest):
 
     def test_region_bias(self):
         result = self.geocoder.get("Toledo", region='ES')
-        self.assertEqual(result[0].formatted_address, u'Toledo, Toledo, Spain')
+        self.assertEqual(result[0].formatted_address, u'Toledo, Spain')
 
     def test_language(self):
         result = self.geocoder.get('Moscow', language='ru')
