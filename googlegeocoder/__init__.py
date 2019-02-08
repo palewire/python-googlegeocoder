@@ -19,7 +19,7 @@ class GoogleGeocoder(object):
     def __init__(self, key=None):
         key = key or os.getenv("GOOGLE_MAPS_API_KEY")
         if not key:
-            raise Exception("An API key is required by Google to use this service.")
+            raise Exception("An API key is required by Google.")
         self.key = key
 
     def _fetch_json(self, params):
