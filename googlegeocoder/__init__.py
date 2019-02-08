@@ -13,7 +13,7 @@ class GoogleGeocoder(object):
     """
     A simple wrapper on version 3 of Google's geocoder API
     """
-    BASE_URI = 'http://maps.googleapis.com/maps/api/geocode/json'
+    BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
 
     def _fetch_json(self, params):
         """
