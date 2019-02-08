@@ -23,4 +23,3 @@ Features
 * Bias results to a bounding box you provide
 * Bias results to a region you specify by country code
 * Specify a language code
-* No API key required
