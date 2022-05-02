@@ -3,7 +3,7 @@
 
 # python-googlegeocoder
 
-A simple Python wrapper for version three of Google's geocoder API.
+A simple Python wrapper for Google’s geocoder API
 
 ## Features
 

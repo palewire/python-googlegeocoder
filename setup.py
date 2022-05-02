@@ -41,7 +41,7 @@ def local_version(version):
 
 setup(
     name='python-googlegeocoder',
-    description="A simple Python wrapper for version three of Google's geocoder API",
+    description="A simple Python wrapper for Google’s geocoder API",
     author='Ben Welsh',
     author_email='b@palewi.re',
     url='http://palewi.re/docs/python-googlegeocoder',
