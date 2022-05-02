@@ -45,6 +45,7 @@ setup(
     author='Ben Welsh',
     author_email='b@palewi.re',
     url='http://palewi.re/docs/python-googlegeocoder',
+    license="GPL",
     packages=(
         "googlegeocoder",
     ),
