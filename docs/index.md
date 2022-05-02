@@ -1,3 +1,6 @@
+```{include} _templates/nav.html
+```
+
 # python-googlegeocoder
 
 A simple Python wrapper for version three of Google's geocoder API.
