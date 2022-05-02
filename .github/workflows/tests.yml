@@ -26,7 +26,7 @@ jobs:
 
       - id: lint
         name: Lint
-        run: pipenv run flake8 ./muckrock
+        run: pipenv run flake8 ./googlegeocoder
 
   test-python:
     name: Test Python code
