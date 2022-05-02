@@ -1,20 +1,4 @@
-.. python-googlegeocoder documentation master file, created by
-   sphinx-quickstart on Mon May  2 04:29:50 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. meta::
+      :http-equiv=Refresh: 0; url='https://palewi.re/docs/python-googlegeocoder/'
 
-Welcome to python-googlegeocoder's documentation!
-=================================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+This project has been moved to `https://palewi.re/docs/python-googlegeocoder/ <https://palewi.re/docs/python-googlegeocoder/>`.
