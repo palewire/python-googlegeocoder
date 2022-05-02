@@ -3,10 +3,10 @@
 * Submit an address and have it geocoded
 * Submit a lat/lng pair and have it reverse-geocoded
 * Results include all data returned by Google, including formatted address, location, viewport, bounds, address type and address components
-* Results automatically converted to WKT format
 * Bias results to a bounding box you provide
 * Bias results to a region you specify by country code
 * Specify a language code
+* Results automatically converted to WKT format
 
 ## Links
 
