@@ -10,7 +10,7 @@
 
 ## Links
 
-* Docs: [python-googlegeocoder.rtfd.org](http://python-googlegeocoder.rtfd.org)
+* Docs: [palewi.re/docs/python-googlegeocoder/](https://palewi.re/docs/python-googlegeocoder/)
 * Issues: [github.com/datadesk/python-googlegeocoder/issues](https://github.com/datadesk/python-googlegeocoder/issues)
 * Packaging: [pypi.python.org/pypi/python-googlegeocoder](https://pypi.python.org/pypi/python-googlegeocoder)
 * Testing: [travis-ci.org/datadesk/python-googlegeocoder](https://travis-ci.org/datadesk/python-googlegeocoder)
