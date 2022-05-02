@@ -1,16 +1,68 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""Package and release the module."""
+import os
+
 from setuptools import setup
+
+
+def read(file_name):
+    """Read the provided file."""
+    this_dir = os.path.dirname(__file__)
+    file_path = os.path.join(this_dir, file_name)
+    with open(file_path) as f:
+        return f.read()
+
+
+def version_scheme(version):
+    """Version scheme hack for setuptools_scm.
+
+    Appears to be necessary to due to the bug documented here: https://github.com/pypa/setuptools_scm/issues/342
+    If that issue is resolved, this method can be removed.
+    """
+    import time
+
+    from setuptools_scm.version import guess_next_version
+
+    if version.exact:
+        return version.format_with("{tag}")
+    else:
+        _super_value = version.format_next_version(guess_next_version)
+        now = int(time.time())
+        return _super_value + str(now)
+
+
+def local_version(version):
+    """Local version scheme hack for setuptools_scm.
+
+    Appears to be necessary to due to the bug documented here: https://github.com/pypa/setuptools_scm/issues/342
+    If that issue is resolved, this method can be removed.
+    """
+    return ""
+
 
 setup(
     name='python-googlegeocoder',
-    version='0.4.0',
-    description='A simple Python wrapper for version three of Google\'s geocoder API',
+    description="A simple Python wrapper for version three of Google's geocoder API",
     author='Ben Welsh',
-    author_email='ben.welsh@latimes.com',
-    url='http://datadesk.github.com/python-googlegeocoder/',
+    author_email='b@palewi.re',
+    url='http://palewi.re/docs/python-googlegeocoder',
     packages=(
         "googlegeocoder",
     ),
-    install_requires=("six>=1.4.1",)
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "License :: OSI Approved :: MIT License",
+    ],
+    setup_requires=["setuptools_scm"],
+    use_scm_version={"version_scheme": version_scheme, "local_scheme": local_version},
+    project_urls={
+        "Documentation": "http://palewi.re/docs/python-googlegeocoder",
+        "Source": "https://github.com/palewire/python-googlegeocoder",
+        "Tracker": "https://github.com/palewire/python-googlegeocoder/issues",
+    },
 )

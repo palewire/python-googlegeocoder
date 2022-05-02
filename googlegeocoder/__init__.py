@@ -1,19 +1,12 @@
-"""
-A simple Python wrapper on version 3 of Google's geocoder API.
-"""
+"""A simple Python wrapper on version 3 of Google's geocoder API."""
 import os
-import six
-from six.moves import urllib
-try:
-    import json
-except ImportError:
-    import simplejson as json
+import json
+import urllib.parse
+import urllib.request
 
 
 class GoogleGeocoder(object):
-    """
-    A simple wrapper on version 3 of Google's geocoder API
-    """
+    """A simple wrapper on version 3 of Google's geocoder API."""
     BASE_URI = 'https://maps.googleapis.com/maps/api/geocode/json'
 
     def __init__(self, key=None):
@@ -23,9 +16,7 @@ class GoogleGeocoder(object):
         self.key = key
 
     def _fetch_json(self, params):
-        """
-        Configure a HTTP request, fire it off and return the response.
-        """
+        """Configure a HTTP request, fire it off and return the response."""
         params = urllib.parse.urlencode(params, doseq=True)
         request = urllib.request.Request(self.BASE_URI + "?" + params)
         response = urllib.request.urlopen(request)
@@ -37,7 +28,7 @@ class GoogleGeocoder(object):
             'sensor': sensor,
             'key': self.key
         }
-        if isinstance(submission, six.string_types):
+        if isinstance(submission, str):
             params['address'] = submission
         elif len(submission) == 2:
             params['latlng'] = ",".join(map(str, submission))
@@ -62,24 +53,13 @@ class GoogleGeocoder(object):
 
 
 class UnicodeMixin(object):
-    """
-    Mixin class to handle defining the proper __str__/__unicode__
-    methods in Python 2 or 3.
-    """
-    # Python 3
-    if six.PY3:
-        def __str__(self):
-            return self.__unicode__()
-    # Python 2
-    else:
-        def __str__(self):
-            return self.__unicode__().encode('utf8')
+    """Mixin class to handle defining the proper __str__/__unicode__ methods in Python 2 or 3."""
+    def __str__(self):
+        return self.__unicode__()
 
 
 class BaseAPIObject(UnicodeMixin):
-    """
-    A generic object to be returned by the API
-    """
+    """A generic object to be returned by the API."""
     def __init__(self, d):
         self.__dict__ = d
 
@@ -88,8 +68,7 @@ class BaseAPIObject(UnicodeMixin):
 
 
 class GeocoderResult(BaseAPIObject):
-    """
-    A results objects returned by the API.
+    """A results objects returned by the API.
 
     Contains the following attributes:
 
@@ -121,8 +100,7 @@ class GeocoderResult(BaseAPIObject):
 
 
 class AddressComponent(BaseAPIObject):
-    """
-    A piece of an address returned by the API
+    """A piece of an address returned by the API
 
     Contains the following attributes:
 
@@ -141,8 +119,7 @@ class AddressComponent(BaseAPIObject):
 
 
 class Geometry(BaseAPIObject):
-    """
-    A collection of geometric data about a geocoder result.
+    """A collection of geometric data about a geocoder result.
 
     Contains the following attributes:
 
@@ -179,10 +156,7 @@ class Geometry(BaseAPIObject):
 
 
 class Bounds(BaseAPIObject):
-    """
-    A bounding box that contains the `southwest` and `northeast` corners
-    as lnt/lng pairs.
-    """
+    """A bounding box that contains the `southwest` and `northeast` corners as lnt/lng pairs."""
     def __init__(self, d):
         self.__dict__ = d
         self.southwest = Coordinates(self.southwest)
@@ -193,9 +167,7 @@ class Bounds(BaseAPIObject):
 
 
 class Coordinates(BaseAPIObject):
-    """
-    A lat/lng pair.
-    """
+    """A lat/lng pair."""
     def __unicode__(self):
         return u'(%s, %s)' % (self.lat, self.lng)
 
