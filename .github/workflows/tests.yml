@@ -52,7 +52,7 @@ jobs:
         run: pipenv run python test.py
         shell: bash
         env:
-          MUCKROCK_API_TOKEN: ${{ secrets.MUCKROCK_API_TOKEN }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
   test-build:
     name: Build Python package
