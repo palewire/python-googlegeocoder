@@ -8,7 +8,7 @@
 * Specify a language code
 * Results automatically converted to WKT format
 
-## Links
+## Other resources
 
 * Docs: [palewi.re/docs/python-googlegeocoder/](https://palewi.re/docs/python-googlegeocoder/)
 * Issues: [github.com/datadesk/python-googlegeocoder/issues](https://github.com/datadesk/python-googlegeocoder/issues)

@@ -10,6 +10,8 @@ twine = "*"
 setuptools-scm = "*"
 flake8 = "*"
 sphinx = "*"
+sphinx-palewire-theme = "*"
+myst-parser = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"

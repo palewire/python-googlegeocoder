@@ -1,6 +1,3 @@
-```{include} _templates/nav.html
-```
-
 # python-googlegeocoder
 
 A simple Python wrapper for Google’s geocoder API
@@ -91,7 +88,7 @@ for address in list_of_addresses:
     print map(str, output)
 ```
 
-## Resources
+## Other resources
 
 * Repo: [https://github.com/datadesk/python-googlegeocoder](https://github.com/datadesk/python-googlegeocoder)
 * Issues: [https://github.com/datadesk/python-googlegeocoder/issues](https://github.com/datadesk/python-googlegeocoder/issues)
