@@ -17,7 +17,7 @@ class GoogleTest(BaseTest):
 
     def test_latlng(self):
         result = self.geocoder.get((34.236144,-118.500938))
-        self.assertEqual(len(result), 9)
+        self.assertEqual(len(result), 10)
         self.assertRaises(
             ValueError,
             self.geocoder.get,
