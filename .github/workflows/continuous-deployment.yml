@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
 jobs:
   lint-python:
     name: Lint Python code
@@ -55,8 +58,6 @@ jobs:
         name: Run tests
         run: pipenv run python test.py
         shell: bash
-        env:
-          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
 
   test-build:
     name: Build Python package
